@@ -1,4 +1,4 @@
-﻿#  Copyright (c) 2014 Tom Edwards contact@steamreview.org
+#  Copyright (c) 2014 Tom Edwards contact@steamreview.org
 #
 # ##### BEGIN GPL LICENSE BLOCK #####
 #
@@ -1235,7 +1235,7 @@ class SmdExporter(bpy.types.Operator, Logger):
 
 		written = 1
 		if filetype == 'smd':
-			for bake in [bake for bake in bake_results if bake.shapes]:
+			if any(bake.shapes for bake in bake_results):
 				written += self.writeSMD(id,bake_results,name,filepath,filetype='vta')
 			for name,vca in bake_results[0].vertex_animations.items():
 				written += self.writeVCA(name,vca,filepath)
